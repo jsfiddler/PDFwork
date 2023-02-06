@@ -1,4 +1,10 @@
 //var xnum=prompt('enter the number', 'XP055193370');
+/*xnum must be added by other script.
+ * cross domain window messaging only with postMessage possible.
+ * modify bookmarklet would allow to download all. I do not want this. Can I just send the code encoded to the window by postMessage?
+ * postMessages for 5 minutes (setInterval). Once read, bc.close();
+ */
+
 function generateKey(length) {
 	var result = '';
 	var characters = 'QWERTabc1234567890';
