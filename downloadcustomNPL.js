@@ -21,13 +21,25 @@ async function sendBlob(xnum){
 	o={};
 	const pdfArrayBuffer=await fetch(url, options).then(res=>res.blob()).then(e=>{o.xnum=xnum; return e.arrayBuffer()}).then(res=>o.buffer=res);
 	myWindow.postMessage(o);
-	window.location.reload(); /*close it, so noone can see the path;*/
+	console.log(url);
+	console.log(o);
+	//window.location.reload(); /*close it, so noone can see the path;*/
     return true;
 };
 
 
 (async function(){
 myWindow = await window.open("", "myWindow", "width=700,height=600,   top=0,left=0,scrollbars,resizable"); /*open childWindow*/
+/*create a broadCastChannel and Listen for spefici data!*/
+const bc = new BroadcastChannel('ParentChildMessageTunnel');
+bc.onmessage=(e)=>{
+	if (e.data.message === 'done'){
+		setTimeout(()=>{
+				myWindow.close();
+				console.log(e.data);
+			},'1000')
+	}
+};
   /*part 1: load & add external script to the childWindow.*/
 await addScript('https://unpkg.com/downloadjs@1.4.7'); /*script for downloading files*/
 await addScript('https://unpkg.com/pdf-lib@1.4.0/dist/pdf-lib.min.js'); /*pdf-lib core*/
