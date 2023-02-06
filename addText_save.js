@@ -3,6 +3,8 @@ var { degrees,PDFDocument, StandardFonts, rgb } = PDFLib;
 async function getPDF(data){ /*Starts when a file will be uploaded from the input-control*/
 	const pdfDoc = await PDFDocument.load(data.buffer);
 	await modifymyPDF(pdfDoc,data);
+	const bc = new BroadcastChannel('ParentChildMessageTunnel');
+	bc.postMessage({message:'done'});
 };
 	
 async function modifymyPDF(pdfDoc,data) { /*Hinzufügen von Text und dergleichen*/
