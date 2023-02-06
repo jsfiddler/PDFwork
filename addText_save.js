@@ -17,10 +17,10 @@ async function modifymyPDF(pdfDoc,data) { /*Hinzufügen von Text und dergleichen
 	const { width, height } = pages[0].getSize() /*all pages are same size, otherwise calculate it for each page independetly*/
 
 	pages.forEach(page=>{
-		page.drawText('------------  Added this Text ------------', {
+		page.drawText('Forwarding, provision for use, reproduction, etc. to third parties is not permitted', {
 			x: 120,
 			y: 20,
-			size: 8,
+			size: 10,
 			font: helveticaFont,
 			color: rgb(0.95, 0.1, 0.1),
 			rotate: degrees(0)
