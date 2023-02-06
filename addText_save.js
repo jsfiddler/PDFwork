@@ -3,8 +3,6 @@ var { degrees,PDFDocument, StandardFonts, rgb } = PDFLib;
 async function getPDF(data){ /*Starts when a file will be uploaded from the input-control*/
 	const pdfDoc = await PDFDocument.load(data.buffer);
 	await modifymyPDF(pdfDoc,data);
-	setTimeout(()=>{console.log('waited 10 sec'),'10000'});
-	window.close();
 };
 	
 async function modifymyPDF(pdfDoc,data) { /*Hinzufügen von Text und dergleichen*/
