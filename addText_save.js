@@ -3,6 +3,8 @@ var { degrees,PDFDocument, StandardFonts, rgb } = PDFLib;
 async function getPDF(data){ /*Starts when a file will be uploaded from the input-control*/
 	const pdfDoc = await PDFDocument.load(data.buffer);
 	await modifymyPDF(pdfDoc,data);
+	setTimeout(()=>{console.log('waited 10 sec'),'10000'});
+	window.close();
 };
 	
 async function modifymyPDF(pdfDoc,data) { /*Hinzufügen von Text und dergleichen*/
@@ -26,8 +28,6 @@ async function modifymyPDF(pdfDoc,data) { /*Hinzufügen von Text und dergleichen
 
 	// Trigger the browser to download the PDF document
 	download(pdfBytes, data.xnum+".pdf", "application/pdf");
-	setTimeout(()=>{console.log('waited 10 sec'),'10000'});
-	window.close();
 };
 
 window.addEventListener("message",function(e) { console.log(e); getPDF(e.data);/*your data is captured in e.data */}, false);
