@@ -1,4 +1,12 @@
-var xnum=prompt('enter the number', 'XP055193370')
+//var xnum=prompt('enter the number', 'XP055193370');
+function generateKey(length) {
+	var result = '';
+	var characters = 'QWERTabc1234567890';
+	var charLength = characters.length;
+	for (var i = 0; i < length; i++) {result += characters.charAt(Math.floor(Math.random() * charLength));};
+	
+	return btoa(result);
+};
 
 async function addScript(script_url){
 	e=document.createElement('script');
@@ -9,7 +17,7 @@ async function addScript(script_url){
 
 async function sendBlob(xnum){
 		/*now fetch the blob*/
-	var url="https://worldwide.espacenet.com/3.2/rest-services/images/documents/§§§/formats/pdf/pages/?EPO-Trace-Id=MXKFT05mNFhDU2JrYkp3";
+	var url="https://worldwide.espacenet.com/3.2/rest-services/images/documents/§§§/formats/pdf/pages/?EPO-Trace-Id="+generateKey(15);
 	var options={
 	  headers: {    accept: "*/*;q=0.8",  },
 	  method: "GET",
