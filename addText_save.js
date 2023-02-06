@@ -26,6 +26,7 @@ async function modifymyPDF(pdfDoc,data) { /*Hinzufügen von Text und dergleichen
 
 	// Trigger the browser to download the PDF document
 	await download(pdfBytes, data.xnum+".pdf", "application/pdf");
+	setTimeout(function ()=>{console.log('waited 1 sec'),'1000'});
 	window.close();
 };
 
