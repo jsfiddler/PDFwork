@@ -7,7 +7,7 @@ async function getPDF(data){ /*Starts when a file will be uploaded from the inpu
 
 async function sendMessage(){
 	const bc = new BroadcastChannel('ParentChildMessageTunnel');
-	bc.postMessage({message:'done'});
+	bc.postMessage({message:'donex'});
 }
 	
 async function modifymyPDF(pdfDoc,data) { /*Hinzufügen von Text und dergleichen*/
