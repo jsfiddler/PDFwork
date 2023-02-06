@@ -6,31 +6,26 @@
   </head>
 
   <body>
-    <p>Use Espacenet Notes, to load HTML. Then send ArrayBuffer to ChildWindiw <code>(implemented with "pdf-lib")</code></p>
+    <p>Use Espacenet Notes, to load HTML. Then  <code>(implemented with "pdf-lib")</code></p>
   </body>
  <script>
      var { degrees,PDFDocument, StandardFonts, rgb } = PDFLib;
 	 
-  	async function getPDF(dataAB){ /*Starts when a file will be uploaded from the input-control*/
+  	async function getPDF(data){ /*Starts when a file will be uploaded from the input-control*/
 
-				const pdfDoc = await PDFDocument.load(dataAB);
-				await modifymyPDF(pdfDoc);
+				const pdfDoc = await PDFDocument.load(data.buffer);
+				await modifymyPDF(pdfDoc,data);
 			};
 	
-  </script>
 
-  <script>
-	
-
-    async function modifymyPDF(pdfDoc) { /*Hinzufügen von Text und dergleichen*/
+    async function modifymyPDF(pdfDoc,data) { /*Hinzufügen von Text und dergleichen*/
    
        const pages = pdfDoc.getPages()
 	   const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica)
 		const { width, height } = pages[0].getSize() /*all pages are same size, otherwise calculate it for each page independetly*/
 		
 	   pages.forEach(page=>{
-			page.drawText('------------  Added this t
-				      ext ------------', {
+			page.drawText('------------  Added this Text ------------', {
 			x: 120,
 			y: 20,
 			size: 8,
@@ -44,11 +39,10 @@
 
 
 			// Trigger the browser to download the PDF document
-      download(pdfBytes, "XXX.pdf", "application/pdf");
-    }
-  </script>
-  <script>
-window.addEventListener("message",function(e) { console.log(e); getPDF(e.data);/*get the actual data of the event: e.data */}, false);
+      download(pdfBytes, data.xnum+".pdf", "application/pdf");
+    };
+
+window.addEventListener("message",function(e) { console.log(e); getPDF(e.data);/*your data is captured in e.data */}, false);
 </script>
 
 </html>
