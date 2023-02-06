@@ -1,14 +1,3 @@
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
-    <script src="https://unpkg.com/downloadjs@1.4.7"></script>
-  </head>
-
-  <body>
-    <p>Use Espacenet Notes, to load HTML. Then  <code>(implemented with "pdf-lib")</code></p>
-  </body>
- <script>
      var { degrees,PDFDocument, StandardFonts, rgb } = PDFLib;
 	 
   	async function getPDF(data){ /*Starts when a file will be uploaded from the input-control*/
@@ -43,6 +32,3 @@
     };
 
 window.addEventListener("message",function(e) { console.log(e); getPDF(e.data);/*your data is captured in e.data */}, false);
-</script>
-
-</html>
