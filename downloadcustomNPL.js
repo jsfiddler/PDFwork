@@ -21,9 +21,6 @@ async function sendBlob(xnum){
 	o={};
 	const pdfArrayBuffer=await fetch(url, options).then(res=>res.blob()).then(e=>{o.xnum=xnum; return e.arrayBuffer()}).then(res=>o.buffer=res);
 	myWindow.postMessage(o);
-	console.log(url);
-	console.log(o);
-	//window.location.reload(); /*close it, so noone can see the path;*/
     return true;
 };
 
@@ -37,6 +34,7 @@ bc.onmessage=(e)=>{
 		setTimeout(()=>{
 				myWindow.close();
 				console.log(e.data);
+				window.location.reload(); /*close it, so no-one can see the path;*/
 			},'1000')
 	}
 };
