@@ -1,3 +1,6 @@
+//open BroadcastChannel to listen for parentWindow Messages
+bc=new BroadcastChannel('XP');
+
 // Part 1:  Add pdf.js
 script_url='https://mozilla.github.io/pdf.js/build/pdf.js';
 async function addScript2(script_url){
@@ -12,12 +15,10 @@ async function addScript2(script_url){
 addScript2(script_url);
 
 // Part 2: Add script to work with it.
+// Add Canvas
 _canvas=document.createElement('canvas')
 document.body.appendChild(_canvas);
 
-
-//open BroadcastChannel
-bc=new BroadcastChannel('XP');
 
 // load the page to the canvas!
 function loadPDF(pdf,pageNumber,scale){
@@ -39,7 +40,7 @@ function loadPDF(pdf,pageNumber,scale){
     var renderTask = page.render(renderContext);
     renderTask.promise.then(function () {
 	console.log('Page rendered');
-	hideDownload(_canvas.height,_canvas.width);
+	hideDownload(_canvas.height,_canvas.width); /*now hide the Download Images*/
     });
   });
 };
@@ -54,7 +55,6 @@ bc.onmessage=(evt)=>	{
 					})
 			};
 
-
 // Part 3: Add CSS
 
 const injectCSS = css => {
@@ -64,8 +64,6 @@ const injectCSS = css => {
   document.head.appendChild(el);
   return el;
 };
-
-
 
 function hideDownload(_height,_width){
 	injectCSS(`	.center-cropped {
