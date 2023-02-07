@@ -18,7 +18,7 @@ addScript2(script_url);
 
 //create Buttons
 _divx1=document.createElement('div');
-_divx1.ClassList.add('top-bar');
+_divx1.classList.add('top-bar');
 document.body.appendChild(_divx1);
 _divx1.innerHTML=`
       <button class="btn" id="prev-page">
