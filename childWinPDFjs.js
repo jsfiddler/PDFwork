@@ -117,13 +117,15 @@ function hideDownload(_height,_width){
 		  margin-left: 1rem;
 		}
 	`);
+	
 	_canvas.classList.add('center-cropped');
+	
 	_overlayer=document.createElement('div');
-	_overlayer.classList.add('overlay');
-	_overlayer.classList.add('center-cropped');
-	_overlayer.setAttribute('style','background-image: url("about:blank");')
-	_overlayer.textContent='&nbsp;';
-	document.body.appendChild(_overlayer);
+		_overlayer.classList.add('overlay');
+		_overlayer.classList.add('center-cropped');
+		_overlayer.setAttribute('style','background-image: url("about:blank");')
+		_overlayer.textContent='&nbsp;';
+		document.body.appendChild(_overlayer);
 }
 
 document.querySelector('#prev-page').addEventListener('click', loadPDF(pdf,1,1.2));
