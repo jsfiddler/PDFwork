@@ -1,6 +1,6 @@
 //open BroadcastChannel to listen for parentWindow Messages
 bc=new BroadcastChannel('XP');
-
+var pagenum=1;
 // Part 1:  Add pdf.js
 script_url='https://mozilla.github.io/pdf.js/build/pdf.js';
 async function addScript2(script_url){
@@ -39,9 +39,10 @@ document.body.appendChild(_canvas);
 
 // load the page to the canvas!
 function loadPDF(pdf,pageNumber,scale){
-  pdf.getPage(pageNumber).then(function(page) {
-    console.log('Page loaded');
-    var viewport = page.getViewport({scale: scale});
+	pagenum=pageNumber;
+	pdf.getPage(pageNumber).then(function(page) {
+	console.log('Page loaded');
+	var viewport = page.getViewport({scale: scale});
 
     // Prepare canvas using PDF page dimensions 
     var canvas = _canvas;
@@ -127,7 +128,9 @@ function hideDownload(_height,_width){
 		_overlayer.textContent='&nbsp;';
 		document.body.appendChild(_overlayer);
 }
-/*
-document.querySelector('#prev-page').addEventListener('click', loadPDF(pdf,1,1.2));
-document.querySelector('#next-page').addEventListener('click', loadPDF(pdf,3,1.2));
-*/
+
+nextPDF=()=>{if (pagenum<pdf.numPages) {loadPDF(pdf,pagenum+1,1.2);}};
+prevPDF=()=>{if (pagenum>1){loadPDF(pdf,pagenum-1,1.2)}};
+document.querySelector('#prev-page').addEventListener('click', prevPDF,false);
+document.querySelector('#next-page').addEventListener('click', nextPDF,false);
+
