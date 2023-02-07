@@ -25,7 +25,7 @@ function loadPDF(pdf,pageNumber,scale){
     console.log('Page loaded');
     var viewport = page.getViewport({scale: scale});
 
-    // Prepare canvas using PDF page dimensions
+    // Prepare canvas using PDF page dimensions 
     var canvas = _canvas;
     var context = canvas.getContext('2d');
     canvas.height = viewport.height;
