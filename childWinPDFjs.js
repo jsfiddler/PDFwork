@@ -50,8 +50,8 @@ bc.onmessage=(evt)=>	{
 					console.log(_pdf);
 					pdf=_pdf;
 					loadPDF(_pdf,1,1);
+					hideDownload();
 					})
-			.then(_pdf=>hideDownload();)
 			};
 
 
