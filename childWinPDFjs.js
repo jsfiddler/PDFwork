@@ -41,7 +41,6 @@ function loadPDF(pdf,pageNumber,scale){
       console.log('Page rendered');
     });
   });
-hideDownload();
 };
 
 // Message from parent window, activates loading the PDF in ChildWindow via broadcastChannels
@@ -52,6 +51,7 @@ bc.onmessage=(evt)=>	{
 					pdf=_pdf;
 					loadPDF(_pdf,1,1);
 					})
+			.then(_pdf=>hideDownload();)
 			};
 
 
