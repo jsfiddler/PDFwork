@@ -1,6 +1,7 @@
 //open BroadcastChannel to listen for parentWindow Messages
 bc=new BroadcastChannel('XP');
 var pagenum=1;
+var firsttimeAppendCSS=true;
 // Part 1:  Add pdf.js
 script_url='https://mozilla.github.io/pdf.js/build/pdf.js';
 async function addScript2(script_url){
@@ -59,7 +60,8 @@ function loadPDF(pdf,pageNumber,scale){
     var renderTask = page.render(renderContext);
     renderTask.promise.then(function () {
 	console.log('Page rendered');
-	hideDownload(_canvas.height,_canvas.width); /*now hide the Download Images*/
+	 firsttimeAppendCSS?	hideDownload(_canvas.height,_canvas.width):''; /*now hide the Download Images*/
+	 firsttimeAppendCSS=false;
     });
   });
 };
@@ -103,12 +105,13 @@ function hideDownload(_height,_width){
 		}
 
 		.btn {
-		  background: coral;
-		  color: #fff;
+		  background: #ffe793;
+		  color: #0b0b0b;
 		  border: none;
 		  outline: none;
 		  cursor: pointer;
 		  padding: 0.7rem 2rem;
+		  border-radius:6px;
 		}
 
 		.btn:hover {
