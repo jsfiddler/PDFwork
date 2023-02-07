@@ -72,7 +72,7 @@ bc.onmessage=(evt)=>	{
 			.then(_pdf=>	{
 					console.log(_pdf);
 					pdf=_pdf;
-					loadPDF(_pdf,1,1);
+					loadPDF(_pdf,1,1.5);
 					document.querySelector('#page-count').textContent = _pdf.numPages;
 					})
 			};
@@ -134,8 +134,8 @@ function hideDownload(_height,_width){
 		document.body.appendChild(_overlayer);
 }
 
-nextPDF=()=>{if (pagenum<pdf.numPages) {loadPDF(pdf,pagenum+1,1.2);}};
-prevPDF=()=>{if (pagenum>1){loadPDF(pdf,pagenum-1,1.2)}};
+nextPDF=()=>{if (pagenum<pdf.numPages) {loadPDF(pdf,pagenum+1,1.5);}};
+prevPDF=()=>{if (pagenum>1){loadPDF(pdf,pagenum-1,1.5)}};
 document.querySelector('#prev-page').addEventListener('click', prevPDF,false);
 document.querySelector('#next-page').addEventListener('click', nextPDF,false);
 
