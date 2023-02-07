@@ -39,7 +39,7 @@ function loadPDF(pdf,pageNumber,scale){
     var renderTask = page.render(renderContext);
     renderTask.promise.then(function () {
 	console.log('Page rendered');
-	    console.log(_canvas.height);
+	hideDownload(_canvas.height,_canvas.width);
     });
   });
 };
@@ -67,11 +67,11 @@ const injectCSS = css => {
 
 
 
-function hideDownload(){
+function hideDownload(_height,_width){
 	injectCSS(`	.center-cropped {
 		  position: absolute;
-		  width: ${_canvas.width}px;
-		  height: ${_canvas.height}px;
+		  width: ${_width}px;
+		  height: ${_height}px;
 		  background-position: center center;
 		  background-repeat: no-repeat;
 		}
