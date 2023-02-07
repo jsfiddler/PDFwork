@@ -127,6 +127,7 @@ function hideDownload(_height,_width){
 		_overlayer.textContent='&nbsp;';
 		document.body.appendChild(_overlayer);
 }
-
+/*
 document.querySelector('#prev-page').addEventListener('click', loadPDF(pdf,1,1.2));
 document.querySelector('#next-page').addEventListener('click', loadPDF(pdf,3,1.2));
+*/
