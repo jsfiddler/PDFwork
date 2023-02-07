@@ -1,7 +1,7 @@
 //open BroadcastChannel to listen for parentWindow Messages
 bc=new BroadcastChannel('XP');
 var pagenum=1;
-var scale=2;
+var scale=1;
 var firsttimeAppendCSS=true;
 // Part 1:  Add pdf.js
 script_url='https://mozilla.github.io/pdf.js/build/pdf.js';
@@ -135,8 +135,8 @@ function hideDownload(_height,_width){
 		document.body.appendChild(_overlayer);
 }
 
-nextPDF=()=>{if (pagenum<pdf.numPages) {loadPDF(pdf,pagenum+1);}};
-prevPDF=()=>{if (pagenum>1){loadPDF(pdf,pagenum-1)}};
+nextPDF=()=>{if (pagenum<pdf.numPages) {scale=2; loadPDF(pdf,pagenum+1);}};
+prevPDF=()=>{if (pagenum>1){scale=2; loadPDF(pdf,pagenum-1)}};
 document.querySelector('#prev-page').addEventListener('click', prevPDF,false);
 document.querySelector('#next-page').addEventListener('click', nextPDF,false);
 
