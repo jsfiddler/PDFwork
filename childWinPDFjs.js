@@ -19,6 +19,7 @@ addScript2(script_url);
 //create Buttons
 _divx1=document.createElement('div');
 _divx1.ClassList.add('top-bar');
+document.body.appendChild(_divx1);
 _divx1.innerHTML=`
       <button class="btn" id="prev-page">
         Prev Page
@@ -30,7 +31,6 @@ _divx1.innerHTML=`
         Page <span id="page-num"></span> of <span id="page-count"></span>
       </span>
 `;
-_document.body.appendChild(_divx1);
 
 // Add Canvas
 _canvas=document.createElement('canvas')
