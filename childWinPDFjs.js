@@ -91,7 +91,31 @@ function hideDownload(_height,_width){
 		  background-position: center center;
 		  background-repeat: no-repeat;
 		}
+		
 		.overlay 	{opacity: 0.01;	}
+		
+		.top-bar {
+		  background: #333;
+		  color: #fff;
+		  padding: 1rem;
+		}
+
+		.btn {
+		  background: coral;
+		  color: #fff;
+		  border: none;
+		  outline: none;
+		  cursor: pointer;
+		  padding: 0.7rem 2rem;
+		}
+
+		.btn:hover {
+		  opacity: 0.9;
+		}
+
+		.page-info {
+		  margin-left: 1rem;
+		}
 	`);
 	_canvas.classList.add('center-cropped');
 	_overlayer=document.createElement('div');
