@@ -15,6 +15,23 @@ async function addScript2(script_url){
 addScript2(script_url);
 
 // Part 2: Add script to work with it.
+
+//create Buttons
+_divx1=document.createElement('div');
+_divx1.ClassList.add('top-bar');
+_divx1.innerHTML=`
+      <button class="btn" id="prev-page">
+        Prev Page
+      </button>
+      <button class="btn" id="next-page">
+        Next Page 
+      </button>
+      <span class="page-info">
+        Page <span id="page-num"></span> of <span id="page-count"></span>
+      </span>
+`;
+_document.body.appendChild(_divx1);
+
 // Add Canvas
 _canvas=document.createElement('canvas')
 document.body.appendChild(_canvas);
@@ -52,6 +69,7 @@ bc.onmessage=(evt)=>	{
 					console.log(_pdf);
 					pdf=_pdf;
 					loadPDF(_pdf,1,1);
+					document.querySelector('#page-count').textContent = _pdf.numPages;
 					})
 			};
 
@@ -83,3 +101,6 @@ function hideDownload(_height,_width){
 	_overlayer.textContent='&nbsp;';
 	document.body.appendChild(_overlayer);
 }
+
+document.querySelector('#prev-page').addEventListener('click', loadPDF(pdf,1,1.2));
+document.querySelector('#next-page').addEventListener('click', loadPDF(pdf,3,1.2));
