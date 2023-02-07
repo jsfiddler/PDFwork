@@ -1,3 +1,17 @@
+// Part 1:  Add pdf.js
+script_url='https://mozilla.github.io/pdf.js/build/pdf.js';
+async function addScript2(script_url){
+	e=document.createElement('script');
+	e.textContent=await fetch(script_url).then(res=>res.text());
+	document.body.appendChild(e);
+	// Add worker to pdf.js
+	var pdfjsLib = window['pdfjs-dist/build/pdf'];
+	pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+	return true
+};
+addScript2(script_url);
+
+// Part 2: Add script to work with it.
 _canvas=document.createElement('canvas')
 document.body.appendChild(_canvas);
 
