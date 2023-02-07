@@ -38,9 +38,9 @@ function loadPDF(pdf,pageNumber,scale){
     };
     var renderTask = page.render(renderContext);
     renderTask.promise.then(function () {
-      console.log('Page rendered');
-	    console.log({_canvas.height});
-	    hideDownload();
+	console.log('Page rendered');
+	console.log(_canvas.height);
+	hideDownload();
     });
   });
 };
