@@ -40,6 +40,7 @@ document.body.appendChild(_canvas);
 // load the page to the canvas!
 function loadPDF(pdf,pageNumber,scale){
 	pagenum=pageNumber;
+	document.querySelector('#page-num').textContent=pagenum;
 	pdf.getPage(pageNumber).then(function(page) {
 	console.log('Page loaded');
 	var viewport = page.getViewport({scale: scale});
