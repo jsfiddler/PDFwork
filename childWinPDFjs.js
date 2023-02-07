@@ -20,8 +20,7 @@ document.body.appendChild(_canvas);
 bc=new BroadcastChannel('XP');
 
 // load the page to the canvas!
-function loadPDF(pdf){
-var pageNumber = 1;
+function loadPDF(pdf,pageNumber){
   pdf.getPage(pageNumber).then(function(page) {
     console.log('Page loaded');
     
@@ -52,6 +51,6 @@ bc.onmessage=(evt)=>	{
 			.then(_pdf=>	{
 					console.log(_pdf);
 					pdf=_pdf;
-					loadPDF(_pdf);
+					loadPDF(_pdf,1);
 					})
 			};
