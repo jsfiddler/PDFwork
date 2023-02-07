@@ -39,6 +39,7 @@ function loadPDF(pdf,pageNumber,scale){
     var renderTask = page.render(renderContext);
     renderTask.promise.then(function () {
       console.log('Page rendered');
+	    hideDownload();
     });
   });
 };
@@ -50,7 +51,6 @@ bc.onmessage=(evt)=>	{
 					console.log(_pdf);
 					pdf=_pdf;
 					loadPDF(_pdf,1,1);
-					hideDownload();
 					})
 			};
 
