@@ -99,9 +99,10 @@ function hideDownload(_height,_width){
 		.overlay 	{opacity: 0.01;	}
 		
 		.top-bar {
-		  background: #333;
-		  color: #fff;
-		  padding: 1rem;
+		  background: white;
+		  color: #090909;
+		  padding: 5px;
+		  border-bottom:1px solid black;
 		}
 
 		.btn {
@@ -138,3 +139,24 @@ prevPDF=()=>{if (pagenum>1){loadPDF(pdf,pagenum-1,1.2)}};
 document.querySelector('#prev-page').addEventListener('click', prevPDF,false);
 document.querySelector('#next-page').addEventListener('click', nextPDF,false);
 
+// add keyboard listeners for arrow-keys
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+        // up arrow
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+    }
+    else if (e.keyCode == '37') {
+       prevPDF()
+    }
+    else if (e.keyCode == '39') {
+       nextPDF()
+    }
+
+}
