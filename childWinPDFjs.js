@@ -4,13 +4,16 @@ async function addScript2(script_url){
 	e=document.createElement('script');
 	e.textContent=await fetch(script_url).then(res=>res.text());
 	document.body.appendChild(e);
+	// Add worker to pdf.js
+	var pdfjsLib = window['pdfjs-dist/build/pdf'];
+	pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
 	return true
 };
 addScript2(script_url);
 
-// Add worker to pdf.js
-var pdfjsLib = window['pdfjs-dist/build/pdf'];
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+_canvas=document.createElement('canvas')
+document.body.appendChild(_canvas);
+
 
 //open BroadcastChannel
 bc=new BroadcastChannel('XP');
@@ -21,7 +24,7 @@ var pageNumber = 1;
   pdf.getPage(pageNumber).then(function(page) {
     console.log('Page loaded');
     
-    var scale = 1.5;
+    var scale = 0.8;
     var viewport = page.getViewport({scale: scale});
 
     // Prepare canvas using PDF page dimensions
@@ -42,11 +45,12 @@ var pageNumber = 1;
   });
 };
 
-bc.onmessage=(evt)=>{
-	pdfjsLib.getDocument(evt.data).promise /*pdf from arrayBuffer*/
-	.then(_pdf=>{
-		console.log(_pdf);
-		pdf=_pdf;
-		loadPDF(_pdf);
-		})
-	};
+// Message from parent window, activates loading the PDF in ChildWindow via broadcastChannels
+bc.onmessage=(evt)=>	{
+			pdfjsLib.getDocument(evt.data).promise /*pdf from arrayBuffer*/
+			.then(_pdf=>	{
+					console.log(_pdf);
+					pdf=_pdf;
+					loadPDF(_pdf);
+					})
+			};
