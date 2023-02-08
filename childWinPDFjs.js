@@ -114,7 +114,6 @@ function hideDownload(_height,_width){
 		  color: #090909;
 		  padding: 5px;
 		  border-bottom:1px solid black;
-		  display: visible;
 		}
 		
 		.temp {
@@ -138,6 +137,11 @@ function hideDownload(_height,_width){
 		.page-info {
 		  margin-left: 1rem;
 		}
+		
+		canvas	{
+			box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
+			margin-top: 5px;
+			}
 	`);
 	
 	_canvas.classList.add('center-cropped');
@@ -148,6 +152,8 @@ function hideDownload(_height,_width){
 		_overlayer.setAttribute('style','background-image: url("about:blank");')
 		_overlayer.textContent='&nbsp;';
 		document.body.appendChild(_overlayer);
+	
+	_divx1.removeAttribute('style');
 }
 
 nextPDF=()=>{if (pagenum<pdf.numPages) {scale=2; loadPDF(pdf,pagenum+1);}};
