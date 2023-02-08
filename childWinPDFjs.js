@@ -18,9 +18,19 @@ addScript2(script_url);
 
 // Part 2: Add script to work with it.
 
+//create temporary Elements
+_divtemp=document.createElement('div');
+_divtemp.classList.add('temp');
+document.body.appendChild(_divtemp);
+_divtemp.innerHTML=`
+document loading...<br>
+please wait...
+`;
+
 //create Buttons
 _divx1=document.createElement('div');
 _divx1.classList.add('top-bar');
+_divx1.setAttribute('style','display:none'); // init with not displaying untill CSS overwrites this!
 document.body.appendChild(_divx1);
 _divx1.innerHTML=`
       <button class="btn" id="prev-page">
@@ -104,6 +114,11 @@ function hideDownload(_height,_width){
 		  color: #090909;
 		  padding: 5px;
 		  border-bottom:1px solid black;
+		  display: visible;
+		}
+		
+		.temp {
+			display:none;
 		}
 
 		.btn {
